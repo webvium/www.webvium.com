@@ -3,7 +3,6 @@ import EmailLayout from "@/emails/components/EmailLayout";
 export default function EarlyAccessConfirmationEmail() {
   return (
     <EmailLayout
-      eyebrow="Early access"
       title="You’re on the list."
       ctaLabel="Visit webvium.com"
       ctaUrl="https://www.webvium.com"

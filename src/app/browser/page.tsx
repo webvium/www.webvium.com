@@ -173,8 +173,6 @@ const faqs = [
 const section = "flex min-h-screen flex-col justify-center px-5 py-24";
 const sectionAlt = `${section} bg-surface`;
 const innerClass = "mx-auto w-full max-w-5xl";
-const eyebrow =
-  "flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary";
 
 export default function WebviumBrowser() {
   return (
@@ -182,9 +180,6 @@ export default function WebviumBrowser() {
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
         <div className={`relative ${innerClass}`}>
-          <Reveal>
-            <span className={eyebrow}>Webvium Browser</span>
-          </Reveal>
           <Reveal
             as="h1"
             delay={80}
@@ -219,7 +214,6 @@ export default function WebviumBrowser() {
               className="rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8"
               aria-labelledby="testing-update-title"
             >
-              <span className={eyebrow}>Testing phase</span>
               <h2
                 id="testing-update-title"
                 className="mt-4 text-2xl font-semibold sm:text-3xl"
@@ -243,9 +237,6 @@ export default function WebviumBrowser() {
 
       <section className={sectionAlt}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Overview</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -276,9 +267,6 @@ export default function WebviumBrowser() {
 
       <section className={section}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Requirements</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -306,9 +294,6 @@ export default function WebviumBrowser() {
 
       <section id="faq" className={sectionAlt}>
         <div className="mx-auto w-full max-w-2xl">
-          <Reveal>
-            <span className={eyebrow}>Questions</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -324,9 +309,6 @@ export default function WebviumBrowser() {
 
       <section className={section}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Screenshots</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -361,9 +343,6 @@ export default function WebviumBrowser() {
 
       <section className={sectionAlt}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Features</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -397,9 +376,6 @@ export default function WebviumBrowser() {
 
       <section className={section}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>More</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}

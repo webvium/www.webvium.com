@@ -199,8 +199,6 @@ const community = [
 const section = "flex min-h-screen flex-col justify-center px-5 py-24";
 const sectionAlt = `${section} bg-surface`;
 const inner = "mx-auto w-full max-w-6xl";
-const eyebrow =
-  "flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary";
 
 export default function Home() {
   return (
@@ -208,10 +206,6 @@ export default function Home() {
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative mx-auto w-full max-w-3xl text-center">
-          <Reveal className="flex justify-center">
-            <span className={eyebrow}>Independent software</span>
-          </Reveal>
-
           <Reveal
             as="h1"
             delay={80}
@@ -254,9 +248,6 @@ export default function Home() {
 
       <section id="features" className={sectionAlt}>
         <div className={inner}>
-          <Reveal>
-            <span className={eyebrow}>Features</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -284,9 +275,6 @@ export default function Home() {
 
       <section id="ecosystem" className={section}>
         <div className={inner}>
-          <Reveal>
-            <span className={eyebrow}>Ecosystem</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -321,9 +309,6 @@ export default function Home() {
 
       <section id="extensions" className={sectionAlt}>
         <div className={inner}>
-          <Reveal>
-            <span className={eyebrow}>Extensions</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -357,9 +342,6 @@ export default function Home() {
 
       <section id="journey" className={section}>
         <div className="mx-auto w-full max-w-2xl">
-          <Reveal>
-            <span className={eyebrow}>Timeline</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -385,9 +367,6 @@ export default function Home() {
 
       <section id="principles" className={sectionAlt}>
         <div className={inner}>
-          <Reveal>
-            <span className={eyebrow}>Approach</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -419,9 +398,6 @@ export default function Home() {
 
       <section id="faq" className={section}>
         <div className="mx-auto w-full max-w-2xl">
-          <Reveal>
-            <span className={eyebrow}>Questions</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}
@@ -437,9 +413,6 @@ export default function Home() {
 
       <section id="follow" className={sectionAlt}>
         <div className={inner}>
-          <Reveal>
-            <span className={eyebrow}>Community</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}

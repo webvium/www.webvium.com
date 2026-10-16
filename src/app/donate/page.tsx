@@ -38,8 +38,6 @@ export const metadata: Metadata = {
 const section = "flex min-h-screen flex-col justify-center px-5 py-24";
 const sectionAlt = `${section} bg-surface`;
 const innerClass = "mx-auto w-full max-w-5xl";
-const eyebrow =
-  "flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary";
 
 const support = [
   {
@@ -112,10 +110,6 @@ export default function DonatePage() {
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
         <div className={`relative ${innerClass}`}>
-          <Reveal>
-            <span className={eyebrow}>Support Webvium</span>
-          </Reveal>
-
           <Reveal
             as="h1"
             delay={80}
@@ -165,10 +159,6 @@ export default function DonatePage() {
 
       <section className={sectionAlt}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Why support</span>
-          </Reveal>
-
           <Reveal
             as="h2"
             delay={60}
@@ -199,10 +189,6 @@ export default function DonatePage() {
 
       <section className={section}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Why donations matter</span>
-          </Reveal>
-
           <Reveal
             as="h2"
             delay={80}
@@ -236,10 +222,6 @@ export default function DonatePage() {
 
       <section className={sectionAlt}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Commitment</span>
-          </Reveal>
-
           <Reveal
             as="h2"
             delay={80}
@@ -269,10 +251,6 @@ export default function DonatePage() {
 
       <section id="donate" className={section}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Donate</span>
-          </Reveal>
-
           <Reveal
             as="h2"
             delay={80}
@@ -333,10 +311,6 @@ export default function DonatePage() {
 
       <section className={sectionAlt}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>No donation required</span>
-          </Reveal>
-
           <Reveal
             as="h2"
             delay={80}

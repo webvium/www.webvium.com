@@ -111,8 +111,6 @@ const downloads: Download[] = [
 const section = "flex min-h-screen flex-col justify-center px-5 py-24";
 const sectionAlt = `${section} bg-surface`;
 const innerClass = "mx-auto w-full max-w-5xl";
-const eyebrow =
-  "flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary";
 
 export default function Downloads() {
   return (
@@ -120,9 +118,6 @@ export default function Downloads() {
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative mx-auto w-full max-w-3xl text-center">
-          <Reveal className="flex justify-center">
-            <span className={eyebrow}>Downloads</span>
-          </Reveal>
           <Reveal
             as="h1"
             delay={80}
@@ -145,7 +140,6 @@ export default function Downloads() {
         <div className={innerClass}>
           <Reveal>
             <aside className="mb-22 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <span className={eyebrow}>Store distribution</span>
               <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">
                 Get the current compatible release
               </h2>
@@ -157,9 +151,6 @@ export default function Downloads() {
                 through one of the stores below.
               </p>
             </aside>
-          </Reveal>
-          <Reveal>
-            <span className={eyebrow}>Apps</span>
           </Reveal>
           <Reveal
             as="h2"
@@ -205,9 +196,6 @@ export default function Downloads() {
 
       <section className={section}>
         <div className={innerClass}>
-          <Reveal>
-            <span className={eyebrow}>Extensions</span>
-          </Reveal>
           <Reveal
             as="h2"
             delay={60}

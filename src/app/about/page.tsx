@@ -39,8 +39,6 @@ export const metadata: Metadata = {
 const section = "flex min-h-screen flex-col justify-center px-5 py-24";
 const sectionAlt = `${section} bg-surface`;
 const innerClass = "mx-auto w-full max-w-5xl";
-const eyebrow =
-  "flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary";
 
 const differences = [
   {
@@ -110,9 +108,6 @@ export default function About() {
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
         <div className={`relative ${innerClass}`}>
-          <Reveal>
-            <span className={eyebrow}>About Webvium</span>
-          </Reveal>
           <Reveal
             as="h1"
             delay={80}
