@@ -1,5 +1,12 @@
 import { Metadata } from "next";
 import Reveal from "@/components/common/Reveal";
+import Accordion from "@/components/ui/Accordion";
+import JsonLd, {
+  SITE_URL,
+  faqPage,
+  founder,
+  organization,
+} from "@/components/common/metadata/JsonLd";
 
 export const metadata: Metadata = {
   title: "Donate - Webvium",
@@ -43,17 +50,22 @@ const support = [
   {
     title: "Keep Webvium independent",
     description:
-      "Donations help Webvium continue without investors, subscriptions, or pressure to monetize the browser in ways that compromise the experience.",
+      "Donations help Webvium continue without investors, subscriptions, or pressure to monetize the browser in ways that compromise privacy or performance.",
   },
   {
-    title: "Fund development",
+    title: "Fund development time",
     description:
-      "Support helps cover the time, infrastructure, testing, and services needed to maintain Webvium and build new features.",
+      "Webvium is built and maintained by one developer. Support pays for time spent on bug fixes, Android and WebView compatibility updates, security work, and new features.",
   },
   {
-    title: "Support the ecosystem",
+    title: "Cover running costs",
     description:
-      "Contributions also help maintain Webvium tools, browser extensions, websites, and future projects across the ecosystem.",
+      "Contributions help pay for the webvium.com domain, website hosting, email delivery, app store accounts, and the test devices used to check Webvium on older phones.",
+  },
+  {
+    title: "Support the wider ecosystem",
+    description:
+      "Donations also help maintain Web App, the open-source browser extensions, Webvium Launcher, and future projects.",
   },
 ];
 
@@ -103,9 +115,56 @@ const otherWays = [
   },
 ];
 
+const faqs = [
+  {
+    question: "Do I need to donate to use Webvium?",
+    answer:
+      "No. Webvium Browser, Web App, and the browser extensions are free to use with every feature included. Donations are optional.",
+  },
+  {
+    question: "How can I donate to Webvium?",
+    answer:
+      "Donations are accepted through GitHub Sponsors at github.com/sponsors/mrepol742. You can make a one-time contribution or set up a recurring monthly sponsorship.",
+  },
+  {
+    question: "Does donating unlock extra features?",
+    answer:
+      "No. There is no premium version of Webvium. Donors get the same browser as everyone else, and donations do not change how Webvium handles your data.",
+  },
+  {
+    question: "Who receives the donations?",
+    answer:
+      "Donations go to Melvin Jones Repol, the independent developer who created and maintains Webvium. Webvium is not a company or a registered nonprofit.",
+  },
+  {
+    question: "What are donations used for?",
+    answer:
+      "Development time, the webvium.com domain and hosting, email delivery, app store accounts, and test devices, along with maintenance of Web App, the extensions, and new projects.",
+  },
+  {
+    question: "Can I help without donating money?",
+    answer:
+      "Yes. Reporting bugs, sharing feedback, recommending Webvium to others, and contributing to open repositories on GitHub all help the project.",
+  },
+];
+
 export default function DonatePage() {
   return (
-    <main>
+    <div>
+      <JsonLd
+        data={[
+          organization,
+          founder,
+          {
+            "@type": "DonateAction",
+            name: "Sponsor Webvium on GitHub",
+            recipient: { "@id": `${SITE_URL}/#founder` },
+            target: "https://github.com/sponsors/mrepol742",
+          },
+          faqPage(faqs),
+        ]}
+      />
+
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
@@ -113,10 +172,9 @@ export default function DonatePage() {
           <Reveal
             as="h1"
             delay={80}
-            className="mt-6 text-4xl font-semibold leading-tight sm:text-6xl"
+            className="text-4xl font-semibold leading-tight sm:text-6xl"
           >
-            Help keep Webvium
-            <span className="block text-primary">independent.</span>
+            Donate to support independent development of Webvium Browser
           </Reveal>
 
           <Reveal
@@ -124,9 +182,10 @@ export default function DonatePage() {
             delay={160}
             className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
           >
-            Webvium is developed independently and made available without
-            requiring subscriptions or accounts. If you find it useful, you can
-            support its continued development.
+            Webvium is a free, privacy-focused Android browser built by one
+            independent developer since 2018, with no investors, subscriptions,
+            or accounts. If you find it useful, you can support its continued
+            development through GitHub Sponsors.
           </Reveal>
 
           <Reveal
@@ -162,7 +221,7 @@ export default function DonatePage() {
           <Reveal
             as="h2"
             delay={60}
-            className="mt-6 text-3xl font-semibold sm:text-4xl"
+            className="text-3xl font-semibold sm:text-4xl"
           >
             Where your support goes
           </Reveal>
@@ -173,7 +232,7 @@ export default function DonatePage() {
             on speed, simplicity, privacy, and user control.
           </Reveal>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
             {support.map((item, i) => (
               <Reveal key={item.title} delay={i * 80} className="card p-6">
                 <h3 className="text-lg font-semibold">{item.title}</h3>
@@ -192,17 +251,17 @@ export default function DonatePage() {
           <Reveal
             as="h2"
             delay={80}
-            className="mt-6 text-3xl font-semibold sm:text-5xl"
+            className="text-3xl font-semibold sm:text-4xl"
           >
-            Small project.
-            <span className="block text-muted">Long-term commitment.</span>
+            Why donations matter for a one-person browser project
           </Reveal>
 
           <div className="mt-8 space-y-5 text-muted">
             <Reveal as="p" delay={120}>
-              Webvium has been developed over many years as an independent
-              project. It does not have a large company, development team, or
-              external funding behind it.
+              Webvium has been developed since 2018 as an independent project.
+              It does not have a company, a development team, or external
+              funding behind it. Design, coding, testing, releases, and support
+              are all handled by one person.
             </Reveal>
 
             <Reveal as="p" delay={180}>
@@ -213,8 +272,10 @@ export default function DonatePage() {
             </Reveal>
 
             <Reveal as="p" delay={240}>
-              Donations help make that work easier to sustain while keeping the
-              project free to evolve at its own pace.
+              Webvium does not collect or sell browsing data to fund itself, and
+              core features are never put behind a paywall. Donations help make
+              the work sustainable while keeping the project free to evolve at
+              its own pace.
             </Reveal>
           </div>
         </div>
@@ -225,7 +286,7 @@ export default function DonatePage() {
           <Reveal
             as="h2"
             delay={80}
-            className="mt-6 text-3xl font-semibold sm:text-4xl"
+            className="text-3xl font-semibold sm:text-4xl"
           >
             What support will not change
           </Reveal>
@@ -254,9 +315,9 @@ export default function DonatePage() {
           <Reveal
             as="h2"
             delay={80}
-            className="mt-6 text-3xl font-semibold sm:text-5xl"
+            className="text-3xl font-semibold sm:text-4xl"
           >
-            Support continued development.
+            How to donate to Webvium
           </Reveal>
 
           <Reveal as="p" delay={160} className="mt-5 max-w-xl text-muted">
@@ -276,17 +337,7 @@ export default function DonatePage() {
 
           <div className="mt-10">
             <Reveal delay={240} className="card flex flex-col p-6 sm:p-8">
-              <div className="flex items-start justify-between gap-6">
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                    GitHub
-                  </span>
-
-                  <h3 className="mt-4 text-2xl font-semibold">
-                    GitHub Sponsors
-                  </h3>
-                </div>
-              </div>
+              <h3 className="text-2xl font-semibold">GitHub Sponsors</h3>
 
               <p className="mt-4 max-w-xl text-sm leading-6 text-muted">
                 Support Webvium directly through GitHub Sponsors. Contributions
@@ -314,9 +365,9 @@ export default function DonatePage() {
           <Reveal
             as="h2"
             delay={80}
-            className="mt-6 text-3xl font-semibold sm:text-4xl"
+            className="text-3xl font-semibold sm:text-4xl"
           >
-            There are other ways to help.
+            Other ways to help Webvium
           </Reveal>
 
           <Reveal as="p" delay={140} className="mt-5 max-w-2xl text-muted">
@@ -339,13 +390,23 @@ export default function DonatePage() {
         </div>
       </section>
 
-      <section className={`${section} relative overflow-hidden`}>
+      <section id="faq" className={section}>
+        <div className="mx-auto w-full max-w-2xl">
+          <Reveal as="h2" className="text-3xl font-semibold sm:text-4xl">
+            Donation questions
+          </Reveal>
+          <Reveal delay={120} className="mt-12">
+            <Accordion items={faqs} />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className={`${sectionAlt} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
         <div className="relative mx-auto w-full max-w-2xl text-center">
           <Reveal as="h2" className="text-3xl font-semibold sm:text-5xl">
-            Support is appreciated,
-            <span className="block text-primary">never required.</span>
+            Support is appreciated, never required
           </Reveal>
 
           <Reveal
@@ -383,6 +444,6 @@ export default function DonatePage() {
           </Reveal>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
