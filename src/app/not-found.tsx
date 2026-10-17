@@ -12,12 +12,6 @@ export default function NotFound() {
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
         <div className="relative mx-auto w-full max-w-5xl">
-          <Reveal>
-            <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary">
-              404 Page Not Found
-            </span>
-          </Reveal>
-
           <Reveal
             as="h1"
             delay={80}
