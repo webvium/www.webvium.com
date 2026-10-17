@@ -11,6 +11,7 @@ import { ConsentProvider } from "@/context/consent";
 import GoogleAdsense from "@/components/common/metadata/GoogleAdsense";
 import GoogleAnalytics from "@/components/common/metadata/GoogleAnalytics";
 import CookieBanner from "@/components/common/PrivacyPolicyPrompt";
+import Script from "next/script";
 
 config.autoAddCss = false;
 
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Melvin Jones Repol",
-      url: "https://www.webvium.com",
+      url: "https://www.melvinjonesrepol.com",
     },
   ],
   alternates: {
@@ -121,7 +122,8 @@ export default function RootLayout({
     >
       <head>
         <meta name="hostname" content="www.webvium.com" />
-        <script
+        <Script
+          id="a"
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})()`,
           }}

@@ -203,7 +203,8 @@ export default function Downloads() {
 
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
-        <div className="relative mx-auto w-full max-w-3xl text-center">
+
+        <div className={`relative ${innerClass}`}>
           <Reveal
             as="h1"
             delay={80}
@@ -214,28 +215,26 @@ export default function Downloads() {
           <Reveal
             as="p"
             delay={160}
-            className="mx-auto mt-6 max-w-2xl text-base text-muted sm:text-lg"
+            className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
           >
             Webvium Browser is free on Google Play and Uptodown for Android 5.0
             and later. This page also lists Web App, Webvium Launcher, and the
             open-source extensions for Chrome, Edge, and Brave.
           </Reveal>
-          <Reveal
-            delay={240}
-            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          >
-            <a
+
+          <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <Link
               href="#apps"
               className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
             >
               Android apps
-            </a>
-            <a
+            </Link>
+            <Link
               href="#extensions"
               className="flex w-full items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface-2 sm:w-auto"
             >
               Browser extensions
-            </a>
+            </Link>
           </Reveal>
         </div>
       </section>

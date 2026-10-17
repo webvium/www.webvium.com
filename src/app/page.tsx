@@ -97,45 +97,6 @@ const features = [
   },
 ];
 
-const timeline = [
-  {
-    year: "2018",
-    text: "The project begins as an open-source experiment to learn programming, understand how web browsers work, and explore how applications handle data.",
-  },
-  {
-    year: "2019",
-    text: "The original codebase had grown complex and relied heavily on AppCompat and other dependencies, so it was rewritten from scratch and the new browser was named Webvium.",
-  },
-  {
-    year: "2020",
-    text: "Development moves to Android Studio and Gradle after two years of building entirely on a phone with an APK builder. The source code is made private.",
-  },
-  {
-    year: "2021",
-    text: "Webvium is published on Google Play with help from a community member, then removed after the listed version fell out of date. It also appears on Uptodown, the Samsung Galaxy Store, and the Amazon Appstore.",
-  },
-  {
-    year: "2022",
-    text: "A major rewrite adds support for the latest Android SDK. Some features are removed, while others are improved or replaced.",
-  },
-  {
-    year: "2023",
-    text: "Webvium VPN launches as an experimental service and is discontinued after about a year. Web App is released for turning websites into Android apps.",
-  },
-  {
-    year: "2024",
-    text: "Webvium Search launches and becomes the browser's default homepage.",
-  },
-  {
-    year: "2025",
-    text: "Version 3 rebuilds the browser on a new foundation with rolling releases, EasyList ad blocking, and Do Not Track and Global Privacy Control support. The browser extension ecosystem is announced.",
-  },
-  {
-    year: "2026",
-    text: "Webvium Search is replaced by a native homepage, the webvium.com domain is acquired, and version 4.0.0 is submitted to Google Play under a new package name.",
-  },
-];
-
 const principles = [
   {
     title: "No third-party dependencies",
@@ -200,6 +161,16 @@ const faqs = [
     answer:
       "Use the in-app report screen to send bug reports and crash logs, open an issue on GitHub, or reach the project through the Webvium pages on Facebook and YouTube.",
   },
+  {
+    question: "How do I install an extension from GitHub?",
+    answer:
+      'Open the extension\'s GitHub link and download the latest release (or the repository as a ZIP), then extract it. In Chrome, Brave or another Chromium-based browser, go to chrome://extensions, turn on Developer mode, click "Load unpacked" and select the extracted folder. In Firefox, open about:debugging#/runtime/this-firefox, click "Load Temporary Add-on" and select the manifest.json file. Firefox removes temporary add-ons when it restarts.',
+  },
+  {
+    question: "How do I install an extension from the Chrome Web Store?",
+    answer:
+      'Open the extension\'s Chrome Web Store link and click "Add to Chrome", then confirm the permissions. The same link works in Brave, Edge and other Chromium-based browsers, which may label the button "Add to Brave" or similar. Firefox can\'t install from the Chrome Web Store, so use the GitHub method there instead.',
+  },
 ];
 
 const community = [
@@ -226,7 +197,7 @@ const community = [
 
 const section = "flex min-h-screen flex-col justify-center px-5 py-24";
 const sectionAlt = `${section} bg-surface`;
-const inner = "mx-auto w-full max-w-6xl";
+const innerClass = "mx-auto w-full max-w-5xl";
 
 export default function Home() {
   return (
@@ -249,7 +220,8 @@ export default function Home() {
 
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
-        <div className="relative mx-auto w-full max-w-3xl text-center">
+
+        <div className={`relative ${innerClass}`}>
           <Reveal
             as="h1"
             delay={80}
@@ -261,7 +233,7 @@ export default function Home() {
           <Reveal
             as="p"
             delay={160}
-            className="mx-auto mt-6 max-w-2xl text-base text-muted sm:text-lg"
+            className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
           >
             Webvium Browser is a free Android browser that blocks ads and
             trackers by default, needs no account, and downloads in under 400
@@ -269,10 +241,7 @@ export default function Home() {
             Web App and open-source extensions for desktop browsers.
           </Reveal>
 
-          <Reveal
-            delay={240}
-            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          >
+          <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/downloads"
               className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
@@ -291,7 +260,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={320}>
-            <dl className="mx-auto mt-14 grid max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border text-left sm:grid-cols-4">
+            <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border text-left sm:grid-cols-4">
               {facts.map((fact) => (
                 <div key={fact.label} className="bg-background px-4 py-3">
                   <dt className="text-xs text-muted">{fact.label}</dt>
@@ -304,7 +273,7 @@ export default function Home() {
       </section>
 
       <section id="features" className={sectionAlt}>
-        <div className={inner}>
+        <div className={innerClass}>
           <Reveal as="h2" className="text-3xl font-semibold sm:text-4xl">
             What Webvium Browser does differently
           </Reveal>
@@ -329,7 +298,7 @@ export default function Home() {
       </section>
 
       <section id="ecosystem" className={section}>
-        <div className={inner}>
+        <div className={innerClass}>
           <Reveal as="h2" className="text-3xl font-semibold sm:text-4xl">
             Webvium projects for Android and the web
           </Reveal>
@@ -361,7 +330,7 @@ export default function Home() {
       </section>
 
       <section id="extensions" className={sectionAlt}>
-        <div className={inner}>
+        <div className={innerClass}>
           <Reveal as="h2" className="text-3xl font-semibold sm:text-4xl">
             Open-source extensions for Chrome, Edge, and Brave
           </Reveal>
@@ -377,7 +346,7 @@ export default function Home() {
             items={extensions.map((extension) => (
               <Link
                 key={extension.name}
-                href={extension.github_url ?? "/"}
+                href={`/extensions/${extension.name.toLocaleLowerCase().replaceAll(" ", "-")}`}
                 className="card flex h-full w-72 flex-col p-6"
                 style={{ boxShadow: "none" }}
               >
@@ -391,34 +360,8 @@ export default function Home() {
         </Reveal>
       </section>
 
-      <section id="journey" className={section}>
-        <div className="mx-auto w-full max-w-2xl">
-          <Reveal as="h2" className="text-3xl font-semibold sm:text-4xl">
-            Webvium history, from 2018 to today
-          </Reveal>
-          <Reveal as="p" delay={80} className="mt-3 text-muted">
-            Webvium has been developed by one person for more than eight years,
-            through several rewrites and app store moves.
-          </Reveal>
-
-          <ol className="mt-12 flex flex-col">
-            {timeline.map((item, i) => (
-              <Reveal
-                as="li"
-                key={item.text}
-                delay={i * 80}
-                className="flex gap-5 border-l border-border pb-8 pl-5 last:pb-0"
-              >
-                <span className="font-semibold text-primary">{item.year}</span>
-                <span className="text-muted">{item.text}</span>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       <section id="principles" className={sectionAlt}>
-        <div className={inner}>
+        <div className={innerClass}>
           <Reveal as="h2" className="text-3xl font-semibold sm:text-4xl">
             Why a lightweight browser matters
           </Reveal>
@@ -457,7 +400,7 @@ export default function Home() {
       </section>
 
       <section id="follow" className={sectionAlt}>
-        <div className={inner}>
+        <div className={innerClass}>
           <Reveal as="h2" className="text-3xl font-semibold sm:text-4xl">
             Follow Webvium development
           </Reveal>

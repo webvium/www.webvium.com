@@ -7,6 +7,7 @@ import JsonLd, {
   founder,
   organization,
 } from "@/components/common/metadata/JsonLd";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Donate - Webvium",
@@ -199,19 +200,19 @@ export default function DonatePage() {
           </Reveal>
 
           <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a
+            <Link
               href="#donate"
               className="flex items-center justify-center rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
             >
               Donate
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="https://github.com/webvium"
               className="flex items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface"
             >
               View on GitHub
-            </a>
+            </Link>
           </Reveal>
         </div>
       </section>

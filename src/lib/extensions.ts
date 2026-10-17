@@ -1,7 +1,8 @@
 export interface Extension {
   name: string;
+  cover?: string;
   description: string;
-  github_url?: string;
+  github_url: string;
   chrome_webstore_url?: string;
 }
 
@@ -21,8 +22,12 @@ const extensions: Extension[] = [
   {
     name: "Awesome New Tab",
     description:
-      "Tired of Chrome's BORING new tab page? This extension replaces it with a customizable floating console that appears on any webpage. Plus with Bing Wallpaper as the background no more static, predictable wallpaper!",
+      "A modern, customizable browser new tab experience with stunning Bing Wallpaper backgrounds and a clean, immersive design.",
+    cover:
+      "https://raw.githubusercontent.com/webvium/awesome-new-tab-extension/refs/heads/master/this-is-a-screenshot.png",
     github_url: "https://github.com/webvium/awesome-new-tab-extension",
+    chrome_webstore_url:
+      "https://chromewebstore.google.com/detail/kfoebhjfkkmenooogbaaamhnknaknbmk?utm_source=item-share-cb",
   },
   {
     name: "Browser Storage Inspector",
