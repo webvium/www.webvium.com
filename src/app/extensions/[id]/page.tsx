@@ -2,6 +2,7 @@ import extensions from "@/lib/extensions";
 import Reveal from "@/components/common/Reveal";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Metadata } from "next";
 
 interface PageProps {
   params: Promise<{ id: string }>;
