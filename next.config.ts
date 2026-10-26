@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const ContentSecurityPolicy = `
   default-src 'self';
+
   base-uri 'self';
   object-src 'none';
 
@@ -14,7 +15,8 @@ const ContentSecurityPolicy = `
     https://www.googletagmanager.com
     https://www.google-analytics.com
     https://pagead2.googlesyndication.com
-    https://googleads.g.doubleclick.net;
+    https://googleads.g.doubleclick.net
+    https://app.aiskillhub.dev;
 
   style-src
     'self'
@@ -51,14 +53,10 @@ const ContentSecurityPolicy = `
     https://www.google.com
     https://www.google.com.ph
     https://td.doubleclick.net
-    https://googleads.g.doubleclick.net;
+    https://googleads.g.doubleclick.net
+    https://app.aiskillhub.dev;
 
   worker-src 'self' blob:;
-  child-src 'self' blob:;
-
-  form-action 'self';
-
-  upgrade-insecure-requests;
 `.replace(/\n/g, "");
 
 const nextConfig: NextConfig = {

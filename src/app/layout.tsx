@@ -129,6 +129,7 @@ export default function RootLayout({
           }}
         />
         <GoogleAdsense />
+        <script src="https://app.aiskillhub.dev/widget.js" data-widget="wgt_ebmgenpq1rgptmrfefuoljoh" async></script>
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-background text-foreground">
         <ConsentProvider>
