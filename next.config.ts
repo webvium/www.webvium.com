@@ -84,10 +84,11 @@ const nextConfig: NextConfig = {
           key: "Cross-Origin-Opener-Policy",
           value: "same-origin",
         },
-        {
-          key: "Cross-Origin-Embedder-Policy",
-          value: "credentialless",
-        },
+        // disabled causing issues on iframed content youtube embed, trustpilot etc...
+        // {
+        //   key: "Cross-Origin-Embedder-Policy",
+        //   value: "credentialless",
+        // },
         {
           key: "Cross-Origin-Resource-Policy",
           value: "same-site",
