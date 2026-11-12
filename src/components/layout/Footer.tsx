@@ -13,7 +13,7 @@ const columns = [
     title: "Products",
     links: [
       { label: "Webvium Browser", href: "/browser" },
-      { label: "Web App", href: "/downloads" },
+      { label: "Webvium VPN", href: "/vpn" },
       { label: "Extensions", href: "/#extensions" },
     ],
   },
@@ -63,7 +63,8 @@ export default function Footer() {
                 Good things are in the works.
               </h2>
               <p className="mt-3 max-w-md text-sm leading-6 text-muted">
-                A quiet note when we ship something worth your attention. No noise, no spam.
+                A quiet note when we ship something worth your attention. No
+                noise, no spam.
               </p>
             </div>
             <NotifyForm />
@@ -72,7 +73,9 @@ export default function Footer() {
 
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
-            <p className="text-xl font-semibold tracking-tight text-foreground">Webvium</p>
+            <p className="text-xl font-semibold tracking-tight text-foreground">
+              Webvium
+            </p>
             <p className="mt-3 max-w-sm text-sm leading-6 text-muted lg:max-w-md">
               Lightweight software for a faster, more private web.
             </p>

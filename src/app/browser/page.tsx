@@ -3,19 +3,18 @@ import {
   faDownload,
   faSliders,
   faGaugeHigh,
-  faPalette,
   faShieldHalved,
-  faUserShield,
   faLayerGroup,
   faMagnifyingGlass,
   faCode,
-  faBug,
-  faCloudArrowDown,
+  faBars,
+  faHardDrive,
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/common/Reveal";
+import HeroMedia from "@/components/common/HeroMedia";
 import Accordion from "@/components/ui/Accordion";
 import JsonLd, {
   browserApp,
@@ -28,14 +27,14 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Browser - Webvium",
   description:
-    "Webvium Browser is a free, lightweight Android web browser with built-in ad and tracker blocking, no account required, and a download under 400 KB. Runs on Android 5.0 and later.",
+    "Webvium Browser is a free, lightweight Android web browser of about 300 KB, with a built-in ad blocker, smart search, experimental extensions, and no account required. Runs on Android 5.0 and later.",
   alternates: {
     canonical: "https://www.webvium.com/browser",
   },
   openGraph: {
     title: "Browser - Webvium",
     description:
-      "Webvium Browser is a free, lightweight Android web browser with built-in ad and tracker blocking, no account required, and a download under 400 KB. Runs on Android 5.0 and later.",
+      "Webvium Browser is a free, lightweight Android web browser of about 300 KB, with a built-in ad blocker, smart search, experimental extensions, and no account required. Runs on Android 5.0 and later.",
     url: "https://www.webvium.com/browser",
     siteName: "Webvium",
     images: [
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Browser - Webvium",
     description:
-      "Webvium Browser is a free, lightweight Android web browser with built-in ad and tracker blocking, no account required, and a download under 400 KB. Runs on Android 5.0 and later.",
+      "Webvium Browser is a free, lightweight Android web browser of about 300 KB, with a built-in ad blocker, smart search, experimental extensions, and no account required. Runs on Android 5.0 and later.",
     images: ["https://www.webvium.com/images/webvium-banner.png"],
     creator: "@mrepol742",
   },
@@ -61,82 +60,70 @@ export const metadata: Metadata = {
 
 const features = [
   {
-    icon: faShieldHalved,
-    title: "Built-in ad and tracker blocking",
-    description:
-      "Webvium blocks ads and trackers using EasyList, the same filter list used by many popular ad blockers. It works from the first launch with no extension to install, and you can turn it off in settings for sites you want to support.",
-  },
-  {
-    icon: faUserShield,
-    title: "Privacy signals and no tracking",
-    description:
-      "Webvium sends Do Not Track and Global Privacy Control signals to every site you visit. The browser itself never tracks, collects, or shares your browsing activity, and there is no account to sign in to.",
-  },
-  {
     icon: faGaugeHigh,
-    title: "Lightweight and fast",
+    title: "Fast and light",
     description:
-      "Webvium uses the Android System WebView already on your phone to render pages, so the app itself stays under 400 KB. It installs in seconds, opens quickly, and stays responsive on older and low-memory devices.",
+      "The install is only about 300 KB, so Webvium downloads in seconds, starts quickly, and loads pages smoothly. It uses the Android System WebView already on your phone instead of shipping its own engine.",
   },
   {
-    icon: faLayerGroup,
-    title: "Tab manager with saved sessions",
+    icon: faShieldHalved,
+    title: "Built-in ad blocker",
     description:
-      "A dedicated tab manager keeps tabs and favicons in local storage, restores your session after the app closes, and makes switching between open pages quick. You can also run multiple Webvium instances side by side.",
+      "Ads and trackers are blocked with over 100,000 filter rules. Live counts show what was blocked on each page, every blocked address is listed, and one switch turns blocking on or off for any site.",
   },
   {
     icon: faMagnifyingGlass,
-    title: "Search history, bookmarks, and downloads",
+    title: "Smart search",
     description:
-      "One search box finds pages in your history, bookmarks, and downloaded files. The homepage shows recently visited sites, shortcuts, and an optional RSS news feed that is cached on your device.",
-  },
-  {
-    icon: faSliders,
-    title: "Deep customization",
-    description:
-      "Switch between light and dark themes, add soft rounded screen curves, or set your own photo as the background. Web preferences and privacy settings can be adjusted at any time.",
-  },
-  {
-    icon: faPalette,
-    title: "Material Design interface",
-    description:
-      "A clean interface based on Material Design, with carefully chosen colors and icons and the Maven Pro typeface, so menus and settings feel familiar on Android.",
+      "Suggestions appear as you type, from your history and the web. Voice search is supported, and you can choose your preferred search provider.",
   },
   {
     icon: faCode,
-    title: "Developer tools",
+    title: "Extensions (experimental)",
     description:
-      "A DevTools window lets web developers inspect pages and read console output directly on the phone, which is useful for testing mobile sites without a desktop connection.",
+      "Install user scripts from a .user.js link, or write your own, to change how sites look and behave. Scripts use the same format as Tampermonkey and Greasemonkey, and you decide whether they run in private tabs.",
   },
   {
-    icon: faCloudArrowDown,
-    title: "Backup, restore, and export",
+    icon: faBars,
+    title: "Everything in one menu",
     description:
-      "Back up your history, bookmarks, searches, and settings with a tap, then restore them on a new phone or after reinstalling. Bookmarks can be imported and exported.",
+      "New tab and private tab, history, downloads, bookmarks, find in page, share, add to home screen, desktop site mode, open local files, and developer tools are all one tap away.",
   },
   {
-    icon: faBug,
-    title: "In-app bug reports",
+    icon: faLayerGroup,
+    title: "Tabs and home screen",
     description:
-      "If something breaks, the report screen sends feedback and crash logs straight to the developer, without needing to write an email.",
+      "Switch between tabs from a simple tab sheet, open private tabs when you need them, and keep your favorite sites as shortcuts on the home screen.",
+  },
+  {
+    icon: faSliders,
+    title: "Settings you can tune",
+    description:
+      "Theme, display, and background options, privacy controls for data, cookies, and location, accessibility options such as zoom and volume control, plus download, video caption, content, security, and JavaScript settings.",
+  },
+  {
+    icon: faHardDrive,
+    title: "Storage you control",
+    description:
+      "The Manage Space screen shows exactly what Webvium stores. Clear history, search history, the downloads list, cache, cookies, and ad blocker lists separately, whenever you want.",
   },
 ];
 
 const steps = [
   {
-    title: "Open the store listing",
+    title: "Pick one store",
     description:
-      "Go to the Downloads page and choose Google Play or Uptodown. Google Play is the primary release channel, and Uptodown follows its releases.",
+      "Go to the Downloads page and choose Google Play or Uptodown. Google Play is the primary release channel. Pick the store you want to keep updating from, because the two builds are signed differently and cannot update each other.",
   },
   {
     title: "Install the app",
     description:
-      "Tap Install. Because the download is under 400 KB, installation usually takes only a few seconds, even on a slow connection.",
+      "Tap Install. Because the app is only about 300 KB, installation usually takes a few seconds, even on a slow connection.",
   },
   {
     title: "Start browsing",
     description:
-      "Open Webvium and start browsing right away. Ad blocking and privacy signals are already on, and there is no account or setup wizard.",
+      "Open Webvium and start browsing right away. The ad blocker is already on, and there is no account or setup wizard.",
   },
   {
     title: "Make it your default browser (optional)",
@@ -146,8 +133,11 @@ const steps = [
 ];
 
 const resources = [
-  { label: "Introducing Webvium Browser for Android Devices", href: "#" },
   { label: "Webvium release changelog", href: "/changelog" },
+  {
+    label: "Get Webvium Browser on Google Play",
+    href: "https://play.google.com/store/apps/details?id=com.webvium.browser",
+  },
   {
     label: "Download Webvium Browser on Uptodown",
     href: "https://webvium.en.uptodown.com/android",
@@ -172,26 +162,23 @@ const resources = [
 ];
 
 const gallery = [
-  "/images/webvium-1.jpg",
-  "/images/webvium-2.jpg",
-  "/images/webvium-3.jpg",
-  "/images/webvium-4.jpg",
-  "/images/webvium-5.jpg",
-  "/images/webvium-6.jpg",
-  "/images/webvium-7.jpg",
-  "/images/webvium-8.jpg",
-  "/images/webvium-9.jpg",
-  "/images/webvium-10.jpg",
-  "/images/webvium-11.jpg",
+  "/images/01-screenshot-1080x1920.png",
+  "/images/02-screenshot-1080x1920.png",
+  "/images/03-screenshot-1080x1920.png",
+  "/images/04-screenshot-1080x1920.png",
+  "/images/05-screenshot-1080x1920.png",
+  "/images/06-screenshot-1080x1920.png",
+  "/images/07-screenshot-1080x1920.png",
+  "/images/08-screenshot-1080x1920.png",
 ];
 
 const requirements = [
   { label: "Operating system", value: "Android 5.0 (Lollipop) and later" },
-  { label: "Download size", value: "About 375 KB (version 3.1.3)" },
+  { label: "Current version", value: "4.0.1" },
+  { label: "Install size", value: "About 300 KB" },
   { label: "Rendering engine", value: "Android System WebView (Chromium)" },
   { label: "Price", value: "Free, no in-app purchases" },
   { label: "Account", value: "Not required" },
-  { label: "Permissions", value: "Storage for downloads only" },
   { label: "Language", value: "English" },
   { label: "Developer", value: "Melvin Jones Repol" },
 ];
@@ -200,7 +187,7 @@ const faqs = [
   {
     question: "What is Webvium Browser?",
     answer:
-      "Webvium Browser is a free, lightweight web browser for Android, developed independently since 2018. It blocks ads and trackers by default, sends Do Not Track and Global Privacy Control signals, does not require an account, and downloads in under 400 KB.",
+      "Webvium Browser is a free, lightweight web browser for Android, developed independently since 2018. The app is only about 300 KB, blocks ads and trackers with a built-in ad blocker, and does not require an account.",
   },
   {
     question: "Why is Webvium so small?",
@@ -210,27 +197,38 @@ const faqs = [
   {
     question: "Where can I install Webvium Browser?",
     answer:
-      "Install Webvium Browser from Google Play or Uptodown. Google Play is the primary release channel, and Uptodown follows the same releases. Version 4.0.0 is currently going through Google Play review.",
+      "Install Webvium Browser from Google Play or Uptodown. Google Play is the primary release channel, and Uptodown follows the same releases.",
+  },
+  {
+    question:
+      "Can the Uptodown version update the Google Play version, or the other way around?",
+    answer:
+      "No. The Google Play and Uptodown builds are signed with different keys, so Android treats them as different sources of the same app. An Uptodown APK cannot update a Google Play install, and Google Play cannot update an Uptodown install. To switch stores, uninstall Webvium first (clearing its data in the process) and then install it from the store you want to keep using.",
   },
   {
     question: "Can I use an older version?",
     answer:
-      "Older Webvium versions are not compatible with newer Google Play releases. Version 4.0.0 uses a new package name, so older installs will not update to it automatically. Install the current version from Google Play or Uptodown instead.",
+      "Older Webvium versions are not compatible with the 4.x releases. Version 4 uses a new package name, so older installs will not update to it automatically. Install the current version from Google Play or Uptodown instead.",
   },
   {
     question: "Does the ad blocker need setup?",
     answer:
-      "No. Ad and tracker blocking uses EasyList filters and is on by default. You can adjust it in settings at any time.",
+      "No. The ad blocker is on by default with over 100,000 filter rules. You can see what was blocked on each page and turn blocking off for any site with one switch.",
+  },
+  {
+    question: "What are Webvium extensions?",
+    answer:
+      "Extensions are user scripts in the same format as Tampermonkey and Greasemonkey. Install one from a .user.js link or write your own to change how sites look and behave. The feature is experimental, and you can choose whether extensions run in private tabs.",
   },
   {
     question: "Is Webvium safe to use?",
     answer:
-      "Webvium does not collect your browsing data and asks only for the storage permission needed for downloads. Pages are rendered by the Android System WebView, which Google updates with security fixes through Google Play.",
+      "Webvium does not collect your browsing data and does not require an account. Pages are rendered by the Android System WebView, which Google updates with security fixes through Google Play. Privacy settings let you control data, cookies, and location access.",
   },
   {
-    question: "Can I move my data from another browser?",
+    question: "How do I free up space used by Webvium?",
     answer:
-      "You can import and export bookmarks, and back up history, searches, and settings from within Webvium.",
+      "Open the Manage Space screen. It shows exactly what Webvium stores and lets you clear history, search history, the downloads list, cache, cookies, and ad blocker lists separately.",
   },
   {
     question: "Will it work on an old phone?",
@@ -258,7 +256,7 @@ export default function WebviumBrowser() {
           {
             ...browserApp,
             description:
-              "A free, lightweight Android web browser with built-in ad and tracker blocking, Do Not Track and Global Privacy Control support, and no account required.",
+              "A free, lightweight Android web browser of about 300 KB with a built-in ad blocker, smart search, experimental user script extensions, and no account required.",
             featureList: features.map((feature) => feature.title),
           },
           faqPage(faqs),
@@ -267,38 +265,60 @@ export default function WebviumBrowser() {
 
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
-        <div className={`relative ${innerClass}`}>
-          <Reveal
-            as="h1"
-            delay={80}
-            className="text-4xl font-semibold leading-tight sm:text-6xl"
-          >
-            Webvium Browser: a free, private Android browser under 400 KB
-          </Reveal>
-          <Reveal
-            as="p"
-            delay={160}
-            className="mt-6 max-w-2xl text-base text-muted sm:text-lg"
-          >
-            Webvium Browser blocks ads and trackers out of the box, sends Do Not
-            Track and Global Privacy Control signals, and needs no account. It
-            runs on Android 5.0 and later and has been developed independently
-            since 2018.
-          </Reveal>
-          <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/downloads"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
+        <div
+          className={`relative ${innerClass} grid items-center gap-16 lg:grid-cols-[minmax(0,1fr)_20rem]`}
+        >
+          <div>
+            <Reveal
+              as="h1"
+              delay={80}
+              className="text-4xl font-semibold leading-tight sm:text-6xl lg:text-5xl"
             >
-              <FontAwesomeIcon icon={faDownload} />
-              Download for Android
-            </Link>
-            <Link
-              href="#features"
-              className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface-2"
+              Webvium Browser: a fast Android browser in about 300 KB
+            </Reveal>
+            <Reveal
+              as="p"
+              delay={160}
+              className="mt-6 max-w-2xl text-base text-muted sm:text-lg"
             >
-              View all features
-            </Link>
+              Webvium 4 brings a calm new dark interface, a built-in ad blocker
+              with over 100,000 filter rules, smart search, and experimental
+              extensions. It needs no account, runs on Android 5.0 and later,
+              and has been developed independently since 2018.
+            </Reveal>
+            <Reveal
+              delay={240}
+              className="mt-10 flex flex-col gap-3 sm:flex-row"
+            >
+              <Link
+                href="/downloads"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
+              >
+                <FontAwesomeIcon icon={faDownload} />
+                Download for Android
+              </Link>
+              <Link
+                href="#features"
+                className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface-2"
+              >
+                View all features
+              </Link>
+            </Reveal>
+          </div>
+          <Reveal delay={200}>
+            <HeroMedia
+              type="phones"
+              shots={[
+                {
+                  src: "/images/01-screenshot-1080x1920.png",
+                  alt: "Webvium home screen with search bar and shortcuts",
+                },
+                {
+                  src: "/images/04-screenshot-1080x1920.png",
+                  alt: "Webvium ad blocker panel showing blocked requests on a page",
+                },
+              ]}
+            />
           </Reveal>
         </div>
       </section>
@@ -314,18 +334,17 @@ export default function WebviumBrowser() {
                 id="release-status-title"
                 className="text-2xl font-semibold sm:text-3xl"
               >
-                Version 4.0.0 is in Google Play review
+                Webvium 4 is out on Google Play and Uptodown
               </h2>
               <p className="mt-4 max-w-3xl text-muted">
-                Webvium 4.0.0 brings bug fixes and a new package name, and it is
-                rolling out through Google Play. Once it is live, Google Play
-                will be the primary source for installs and updates, and
-                Uptodown will follow Google Play releases.
+                Version 4 is a major update with a new interface and a new way
+                of getting around the app. Google Play is the primary source for
+                installs and updates, and Uptodown follows Google Play releases.
               </p>
               <p className="mt-4 max-w-3xl text-sm text-muted">
-                Because the package name changed, older versions will not update
-                to the new release automatically. Please install the current
-                version from Google Play or Uptodown.
+                The Google Play and Uptodown builds are signed differently, so
+                one cannot update the other. Stick with the store you installed
+                from, or uninstall first if you want to switch.
               </p>
             </aside>
           </Reveal>
@@ -349,18 +368,20 @@ export default function WebviumBrowser() {
               own browser engine, Webvium uses the Android System WebView that
               is already installed on your phone. That engine is based on
               Chromium and is kept up to date by Google, which lets Webvium stay
-              under 400 KB while still loading modern websites correctly.
+              at about 300 KB while still loading modern websites correctly.
             </Reveal>
             <Reveal as="p" delay={200}>
               Most browsers grow heavier with every release. Webvium goes the
               other way. The core stays small, the interface stays out of your
-              way, and the features that matter most, like ad blocking, tab
-              management, and data backup, are built in rather than left to
+              way, and the features that matter most, like ad blocking, smart
+              search, and storage controls, are built in rather than left to
               add-ons.
             </Reveal>
             <Reveal as="p" delay={260}>
-              The result is a browser that installs in seconds, opens quickly,
-              and keeps browsing, downloads, and sharing easy, even on older
+              Version 4 rebuilt the interface around speed and a clean, simple
+              look: a calm dark theme, quick search, and the tools you actually
+              use gathered in one menu. The result is a browser that installs in
+              seconds, opens quickly, and stays out of your way, even on older
               hardware with limited memory.
             </Reveal>
           </div>

@@ -2,6 +2,7 @@ import extensions, { Extension } from "@/lib/extensions";
 import { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/common/Reveal";
+import HeroMedia from "@/components/common/HeroMedia";
 import Accordion from "@/components/ui/Accordion";
 import JsonLd, {
   faqPage,
@@ -12,14 +13,14 @@ import JsonLd, {
 export const metadata: Metadata = {
   title: "Downloads - Webvium",
   description:
-    "Get Webvium Browser through Google Play or Uptodown. Google Play is the primary release channel, with supported third-party stores following its releases.",
+    "Get Webvium Browser 4 on Google Play or Uptodown. Google Play is the primary release channel, and Uptodown follows its releases with a separately signed build.",
   alternates: {
     canonical: "https://www.webvium.com/downloads",
   },
   openGraph: {
     title: "Downloads - Webvium",
     description:
-      "Get Webvium Browser through Google Play or Uptodown. Google Play is the primary release channel, with supported third-party stores following its releases.",
+      "Get Webvium Browser 4 on Google Play or Uptodown. Google Play is the primary release channel, and Uptodown follows its releases with a separately signed build.",
     url: "https://www.webvium.com/downloads",
     siteName: "Webvium",
     images: [
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Downloads - Webvium",
     description:
-      "Get Webvium Browser through Google Play or Uptodown. Google Play is the primary release channel, with supported third-party stores following its releases.",
+      "Get Webvium Browser 4 on Google Play or Uptodown. Google Play is the primary release channel, and Uptodown follows its releases with a separately signed build.",
     images: ["https://www.webvium.com/images/webvium-banner.png"],
     creator: "@mrepol742",
   },
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
 
 interface Download {
   name: string;
-  status: "Active" | "In review" | "Coming soon" | "Deprecated";
+  status: "Active" | "Coming soon" | "Under rework" | "Deprecated";
   description: string;
   details: { label: string; value: string }[];
   actions: { label: string; href: string; primary?: boolean }[];
@@ -54,12 +55,13 @@ interface Download {
 const downloads: Download[] = [
   {
     name: "Webvium Browser",
-    status: "In review",
+    status: "Active",
     description:
-      "A free, lightweight Android web browser with built-in ad and tracker blocking, Do Not Track and Global Privacy Control support, tab management, and data backup. Version 4.0.0 is in Google Play review. Uptodown currently offers version 3.1.3 and will follow Google Play releases.",
+      "A free, lightweight Android web browser with a calm new interface, a built-in ad blocker with over 100,000 filter rules, smart search, and experimental extensions. Available on Google Play and Uptodown. The two builds are signed differently, so pick one store and keep updating from it.",
     details: [
       { label: "Platform", value: "Android 5.0+" },
-      { label: "Size", value: "Under 400 KB" },
+      { label: "Version", value: "4.0.1" },
+      { label: "Size", value: "About 300 KB" },
       { label: "Price", value: "Free" },
     ],
     actions: [
@@ -112,11 +114,14 @@ const downloads: Download[] = [
   },
   {
     name: "Webvium VPN",
-    status: "Deprecated",
+    status: "Under rework",
     description:
-      "An experimental private networking service launched in 2023 and discontinued after about a year. It is no longer distributed or supported.",
-    details: [{ label: "Active", value: "2023 to 2024" }],
-    actions: [],
+      "First launched as an experiment in 2023 and discontinued about a year later. Webvium VPN is now under rework, and this time it is being built as the lightest VPN for Android.",
+    details: [
+      { label: "Platform", value: "Android" },
+      { label: "Status", value: "Under rework" },
+    ],
+    actions: [{ label: "Learn more", href: "/vpn", primary: true }],
   },
   {
     name: "Webvium Search",
@@ -153,14 +158,15 @@ const faqs = [
       "Webvium was listed on the Samsung Galaxy Store and Amazon Appstore in the past, but those listings are no longer maintained. Use Google Play or Uptodown to get the current compatible version.",
   },
   {
-    question: "Why is the Google Play listing not available yet?",
+    question:
+      "Can the Uptodown version update the Google Play version, or the other way around?",
     answer:
-      "Version 4.0.0 is going through Google Play review and production rollout. Until it is live, you can install Webvium from Uptodown.",
+      "No. The Google Play and Uptodown builds are signed with different keys, so they are not interchangeable. Installing the Uptodown APK over a Google Play install will fail, and Google Play will not update a copy installed from Uptodown. To switch stores, uninstall Webvium first, which removes its data, then install it from the store you want to keep using.",
   },
   {
     question: "Can I update an older Webvium install?",
     answer:
-      "Older Webvium releases are not compatible with newer Google Play releases because version 4.0.0 uses a new package name. Install the current version from Google Play or Uptodown instead of updating an old APK.",
+      "Older Webvium releases are not compatible with the 4.x releases because version 4 uses a new package name. Install the current version from Google Play or Uptodown instead of updating an old APK.",
   },
   {
     question: "Are the downloads free?",
@@ -170,7 +176,7 @@ const faqs = [
   {
     question: "Are the browser extensions on the Chrome Web Store?",
     answer:
-      "The extensions are published as open-source projects on GitHub. You can install them in any Chromium-based browser by loading the unpacked extension folder in developer mode.",
+      "Some are. Every extension is published as an open-source project on GitHub, and extensions that are also listed on the Chrome Web Store link to it from their own page. Anything not on the store can be installed in any Chromium-based browser by loading the unpacked extension folder in developer mode.",
   },
 ];
 
@@ -204,37 +210,57 @@ export default function Downloads() {
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
-        <div className={`relative ${innerClass}`}>
-          <Reveal
-            as="h1"
-            delay={80}
-            className="text-4xl font-semibold leading-tight sm:text-6xl"
-          >
-            Download Webvium Browser for Android
-          </Reveal>
-          <Reveal
-            as="p"
-            delay={160}
-            className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
-          >
-            Webvium Browser is free on Google Play and Uptodown for Android 5.0
-            and later. This page also lists Web App, Webvium Launcher, and the
-            open-source extensions for Chrome, Edge, and Brave.
-          </Reveal>
+        <div
+          className={`relative ${innerClass} grid items-center gap-14 lg:grid-cols-2`}
+        >
+          <div>
+            <Reveal
+              as="h1"
+              delay={80}
+              className="text-4xl font-semibold leading-tight sm:text-6xl lg:text-5xl"
+            >
+              Download Webvium Browser for Android
+            </Reveal>
+            <Reveal
+              as="p"
+              delay={160}
+              className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
+            >
+              Webvium Browser 4 is free on Google Play and Uptodown for Android
+              5.0 and later. This page also lists Web App, Webvium Launcher,
+              Webvium VPN, and the open-source extensions for Chrome, Edge, and
+              Brave.
+            </Reveal>
 
-          <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="#apps"
-              className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
+            <Reveal
+              delay={240}
+              className="mt-10 flex flex-col gap-3 sm:flex-row"
             >
-              Android apps
-            </Link>
-            <Link
-              href="#extensions"
-              className="flex w-full items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface-2 sm:w-auto"
-            >
-              Browser extensions
-            </Link>
+              <Link
+                href="#apps"
+                className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
+              >
+                Android apps
+              </Link>
+              <Link
+                href="#extensions"
+                className="flex w-full items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface-2 sm:w-auto"
+              >
+                Browser extensions
+              </Link>
+            </Reveal>
+          </div>
+
+          <Reveal delay={200}>
+            <HeroMedia
+              type="wide"
+              shot={{
+                src: "/images/00-feature-graphic-1024x500.png",
+                alt: "Webvium, a 300 KB web browser for Android with an ad blocker, extensions, and fast search",
+              }}
+              width={1024}
+              height={500}
+            />
           </Reveal>
         </div>
       </section>
@@ -247,12 +273,13 @@ export default function Downloads() {
                 Where to get the current compatible release
               </h2>
               <p className="mt-4 max-w-3xl text-muted">
-                Google Play is Webvium&apos;s primary distribution channel, and
-                version 4.0.0 is currently in Google Play review. Uptodown is a
-                supported third-party store and follows Google Play releases.
-                Older releases are not compatible with newer Google Play
-                versions, so please install or update Webvium only through one
-                of the stores below.
+                Webvium 4 is live on Google Play, Webvium&apos;s primary
+                distribution channel, and Uptodown, a supported third-party
+                store that follows Google Play releases. The two builds are
+                signed differently, so the Uptodown version cannot update the
+                Google Play version (or the other way around). Pick one store
+                and keep updating from it. Releases older than version 4 are not
+                compatible with either.
               </p>
             </aside>
           </Reveal>

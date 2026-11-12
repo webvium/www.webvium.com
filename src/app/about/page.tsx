@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Reveal from "@/components/common/Reveal";
+import HeroMedia from "@/components/common/HeroMedia";
 import Accordion from "@/components/ui/Accordion";
 import JsonLd, {
   SITE_URL,
@@ -58,12 +59,12 @@ const differences = [
   {
     title: "Lightweight first",
     description:
-      "Performance is treated as a feature, not an afterthought. Every addition is measured against its cost to app size, memory, and battery, which is why Webvium Browser still downloads in under 400 KB.",
+      "Performance is treated as a feature, not an afterthought. Every addition is measured against its cost to app size, memory, and battery, which is why Webvium Browser is still only about 300 KB.",
   },
   {
     title: "Built-in functionality",
     description:
-      "Ad and tracker blocking, privacy signals, tab management, and backup are part of the browser itself instead of relying on separate extensions or companion apps.",
+      "Ad blocking, smart search, user script extensions, and storage controls are part of the browser itself instead of relying on separate extensions or companion apps.",
   },
   {
     title: "Independent development",
@@ -82,6 +83,11 @@ const beyond = [
     title: "Webvium Launcher",
     description:
       "An upcoming Android home screen launcher designed around the same speed and simplicity as the browser.",
+  },
+  {
+    title: "Webvium VPN",
+    description:
+      "First tried as an experiment in 2023, now under rework. This time it is being built as the lightest VPN for Android.",
   },
   {
     title: "Browser extensions",
@@ -131,6 +137,10 @@ const history = [
     year: "2026",
     text: "Webvium acquires webvium.com after its previous owner failed to renew it, the site is rebuilt from scratch, and version 4.0.0 is submitted to Google Play.",
   },
+  {
+    year: "2026",
+    text: "Webvium 4 launches on Google Play and Uptodown with a new interface and user experience, and Webvium VPN goes back into development as the lightest VPN for Android.",
+  },
 ];
 
 const faqs = [
@@ -175,34 +185,53 @@ export default function About() {
 
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
-        <div className={`relative ${innerClass}`}>
-          <Reveal
-            as="h1"
-            delay={80}
-            className="text-4xl font-semibold leading-tight sm:text-6xl"
-          >
-            About Webvium, an independent Android browser project since 2018
-          </Reveal>
-          <Reveal
-            as="p"
-            delay={160}
-            className="mt-6 max-w-2xl text-base text-muted sm:text-lg"
-          >
-            Webvium is a small software ecosystem created by developer Melvin
-            Jones Repol. It is centered on Webvium Browser, a lightweight
-            Android browser designed for speed, privacy, and user control, and
-            includes Web App, Webvium Launcher, and open-source browser
-            extensions.
-          </Reveal>
-          <Reveal delay={240}>
-            <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4">
-              {facts.map((fact) => (
-                <div key={fact.label} className="bg-background px-4 py-3">
-                  <dt className="text-xs text-muted">{fact.label}</dt>
-                  <dd className="mt-1 text-sm font-medium">{fact.value}</dd>
-                </div>
-              ))}
-            </dl>
+        <div
+          className={`relative ${innerClass} grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_20rem]`}
+        >
+          <div>
+            <Reveal
+              as="h1"
+              delay={80}
+              className="text-4xl font-semibold leading-tight sm:text-6xl lg:text-5xl"
+            >
+              About Webvium, an independent Android browser project since 2018
+            </Reveal>
+            <Reveal
+              as="p"
+              delay={160}
+              className="mt-6 max-w-2xl text-base text-muted sm:text-lg"
+            >
+              Webvium is a small software ecosystem created by developer Melvin
+              Jones Repol. It is centered on Webvium Browser, a lightweight
+              Android browser designed for speed, privacy, and user control, and
+              includes Web App, Webvium Launcher, and open-source browser
+              extensions.
+            </Reveal>
+            <Reveal delay={240}>
+              <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4">
+                {facts.map((fact) => (
+                  <div key={fact.label} className="bg-background px-4 py-3">
+                    <dt className="text-xs text-muted">{fact.label}</dt>
+                    <dd className="mt-1 text-sm font-medium">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+          </div>
+          <Reveal delay={200}>
+            <HeroMedia
+              type="phones"
+              shots={[
+                {
+                  src: "/images/03-screenshot-1080x1920.png",
+                  alt: "Webvium main menu with tabs, history, downloads, and settings",
+                },
+                {
+                  src: "/images/07-screenshot-1080x1920.png",
+                  alt: "Webvium settings screen with general, interface, search, and privacy options",
+                },
+              ]}
+            />
           </Reveal>
         </div>
       </section>

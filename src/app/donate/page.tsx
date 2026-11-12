@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Reveal from "@/components/common/Reveal";
+import HeroMedia from "@/components/common/HeroMedia";
 import Accordion from "@/components/ui/Accordion";
 import JsonLd, {
   SITE_URL,
@@ -169,50 +170,72 @@ export default function DonatePage() {
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
-        <div className={`relative ${innerClass}`}>
-          <Reveal
-            as="h1"
-            delay={80}
-            className="text-4xl font-semibold leading-tight sm:text-6xl"
-          >
-            Donate to support independent development of Webvium Browser
-          </Reveal>
-
-          <Reveal
-            as="p"
-            delay={160}
-            className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
-          >
-            Webvium is a free, privacy-focused Android browser built by one
-            independent developer since 2018, with no investors, subscriptions,
-            or accounts. If you find it useful, you can support its continued
-            development through GitHub Sponsors.
-          </Reveal>
-
-          <Reveal
-            as="p"
-            delay={200}
-            className="mt-4 max-w-xl text-sm leading-6 text-muted"
-          >
-            Donations are never required to use Webvium. They simply provide
-            another way for people who value the project to help sustain it over
-            the long term.
-          </Reveal>
-
-          <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="#donate"
-              className="flex items-center justify-center rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
+        <div
+          className={`relative ${innerClass} grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_20rem]`}
+        >
+          <div>
+            <Reveal
+              as="h1"
+              delay={80}
+              className="text-4xl font-semibold leading-tight sm:text-6xl lg:text-5xl"
             >
-              Donate
-            </Link>
+              Donate to support independent development of Webvium Browser
+            </Reveal>
 
-            <Link
-              href="https://github.com/webvium"
-              className="flex items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface"
+            <Reveal
+              as="p"
+              delay={160}
+              className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
             >
-              View on GitHub
-            </Link>
+              Webvium is a free, privacy-focused Android browser built by one
+              independent developer since 2018, with no investors,
+              subscriptions, or accounts. If you find it useful, you can support
+              its continued development through GitHub Sponsors.
+            </Reveal>
+
+            <Reveal
+              as="p"
+              delay={200}
+              className="mt-4 max-w-xl text-sm leading-6 text-muted"
+            >
+              Donations are never required to use Webvium. They simply provide
+              another way for people who value the project to help sustain it
+              over the long term.
+            </Reveal>
+
+            <Reveal
+              delay={240}
+              className="mt-10 flex flex-col gap-3 sm:flex-row"
+            >
+              <Link
+                href="#donate"
+                className="flex items-center justify-center rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
+              >
+                Donate
+              </Link>
+
+              <Link
+                href="https://github.com/webvium"
+                className="flex items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface"
+              >
+                View on GitHub
+              </Link>
+            </Reveal>
+          </div>
+          <Reveal delay={200}>
+            <HeroMedia
+              type="phones"
+              shots={[
+                {
+                  src: "/images/08-screenshot-1080x1920.png",
+                  alt: "Webvium Manage Space screen showing what the app stores",
+                },
+                {
+                  src: "/images/02-screenshot-1080x1920.png",
+                  alt: "Webvium search suggestions from history and the web",
+                },
+              ]}
+            />
           </Reveal>
         </div>
       </section>

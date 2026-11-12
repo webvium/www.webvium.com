@@ -16,10 +16,11 @@ import { useTheme } from "@/hooks/theme";
 
 const links = [
   { label: "Browser", href: "/browser", index: "01" },
-  { label: "Extensions", href: "/#extensions", index: "02" },
-  { label: "Downloads", href: "/downloads", index: "03" },
-  { label: "Donate", href: "/donate", index: "04" },
-  { label: "About", href: "/about", index: "05" },
+  { label: "VPN", href: "/vpn", index: "02" },
+  { label: "Extensions", href: "/#extensions", index: "03" },
+  { label: "Downloads", href: "/downloads", index: "04" },
+  { label: "Donate", href: "/donate", index: "05" },
+  { label: "About", href: "/about", index: "06" },
 ];
 
 export default function Nav() {

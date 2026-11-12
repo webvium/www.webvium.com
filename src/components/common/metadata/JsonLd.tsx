@@ -31,14 +31,15 @@ export const browserApp = {
   url: `${SITE_URL}/browser`,
   applicationCategory: "BrowserApplication",
   operatingSystem: "Android 5.0 or later",
-  softwareVersion: "4.0.0",
+  softwareVersion: "4.0.1",
   inLanguage: "en",
   isAccessibleForFree: true,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   author: { "@id": `${SITE_URL}/#founder` },
   publisher: { "@id": `${SITE_URL}/#organization` },
-  downloadUrl: "https://webvium.en.uptodown.com/android",
-  screenshot: `${SITE_URL}/images/webvium-1.jpg`,
+  downloadUrl:
+    "https://play.google.com/store/apps/details?id=com.webvium.browser",
+  screenshot: `${SITE_URL}/images/01-screenshot-1080x1920.png`,
 };
 
 export function faqPage(items: QA[]) {

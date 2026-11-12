@@ -12,6 +12,7 @@ export const STATIC_ROUTES = [
   "/changelog",
   "/donate",
   "/downloads",
+  "/vpn",
 ] as const;
 
 function getExtensionIds(): string[] {

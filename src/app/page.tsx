@@ -16,6 +16,7 @@ import {
 import Reveal from "@/components/common/Reveal";
 import Accordion from "@/components/ui/Accordion";
 import Marquee from "@/components/ui/Marquee";
+import HeroMedia from "@/components/common/HeroMedia";
 import JsonLd, {
   SITE_URL,
   browserApp,
@@ -25,18 +26,11 @@ import JsonLd, {
 } from "@/components/common/metadata/JsonLd";
 import extensions from "@/lib/extensions";
 
-const facts = [
-  { label: "Download size", value: "Under 400 KB" },
-  { label: "Works on", value: "Android 5.0 and later" },
-  { label: "Account", value: "Not required" },
-  { label: "In development since", value: "2018" },
-];
-
 const projects = [
   {
     name: "Webvium Browser",
     description:
-      "The flagship Android web browser. Built-in ad and tracker blocking, tab management, data backup, and a Material Design interface in a download of under 400 KB.",
+      "The flagship Android web browser. A calm new interface, a built-in ad blocker, smart search, and experimental extensions in an app of about 300 KB.",
     status: "Active",
     href: "/browser",
   },
@@ -57,9 +51,9 @@ const projects = [
   {
     name: "Webvium VPN",
     description:
-      "An experimental private networking service launched in 2023 and discontinued after about a year.",
-    status: "Archived",
-    href: "/about",
+      "First launched as an experiment in 2023, now under rework. This time it is being built as the lightest VPN for Android.",
+    status: "Under rework",
+    href: "/vpn",
   },
   {
     name: "Webvium Search",
@@ -81,19 +75,19 @@ const features = [
     icon: faShieldHalved,
     title: "Private by default",
     description:
-      "Ads and trackers are blocked with EasyList filters out of the box. Webvium sends Do Not Track and Global Privacy Control signals and does not collect your browsing history.",
+      "The built-in ad blocker uses over 100,000 filter rules and shows live counts of what it blocked on each page. Webvium does not collect your browsing history and needs no account.",
   },
   {
     icon: faSliders,
-    title: "Customizable",
+    title: "Settings you can tune",
     description:
-      "Choose light or dark theme, add rounded screen curves, set your own photo as the background, and adjust web and privacy settings to match how you browse.",
+      "Adjust theme, display, and background, control data, cookies, and location, and tune accessibility, downloads, captions, security, and JavaScript to match how you browse.",
   },
   {
     icon: faCubes,
     title: "Tools built in",
     description:
-      "A tab manager, search across history, bookmarks, and downloads, a DevTools window for web developers, and one-tap backup and restore are part of the app, not add-ons.",
+      "Private tabs, find in page, desktop site mode, developer tools, user script extensions, and a Manage Space screen for clearing stored data are part of the app, not add-ons.",
   },
 ];
 
@@ -114,9 +108,9 @@ const principles = [
       "Webvium targets current Android SDK requirements and relies on the system WebView, which receives security updates through Google Play independently of the app.",
   },
   {
-    title: "Material Design",
+    title: "A calm, focused interface",
     description:
-      "The interface follows Material Design guidelines, so menus, settings, and gestures behave the way Android users already expect.",
+      "Webvium 4 introduced a new dark interface built around speed and simplicity. Search, tabs, and the tools you use most are a tap away, and everything else stays out of your way.",
   },
 ];
 
@@ -134,7 +128,7 @@ const faqs = [
   {
     question: "How big is Webvium Browser?",
     answer:
-      "Version 3.1.3 on Uptodown is about 375 KB. Webvium stays small because it uses the Android System WebView already installed on your phone instead of bundling a separate browser engine.",
+      "The app is only about 300 KB. Webvium stays small because it uses the Android System WebView already installed on your phone instead of bundling a separate browser engine.",
   },
   {
     question: "What Android version do I need?",
@@ -150,6 +144,11 @@ const faqs = [
     question: "Is Webvium open source?",
     answer:
       "Web App and the browser extensions are open source on GitHub. Webvium Browser is developed independently with private source code and is distributed for free through Google Play and Uptodown.",
+  },
+  {
+    question: "Can I switch between the Google Play and Uptodown versions?",
+    answer:
+      "Not by updating. The Google Play and Uptodown builds are signed differently, so the Uptodown version cannot update the Google Play version, and Google Play cannot update the Uptodown version. To switch, uninstall Webvium and reinstall it from the store you want to use.",
   },
   {
     question: "How often is Webvium updated?",
@@ -221,53 +220,58 @@ export default function Home() {
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
-        <div className={`relative ${innerClass}`}>
-          <Reveal
-            as="h1"
-            delay={80}
-            className="text-4xl font-semibold leading-tight sm:text-6xl"
-          >
-            Webvium, a lightweight and private web browser for Android
-          </Reveal>
-
-          <Reveal
-            as="p"
-            delay={160}
-            className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
-          >
-            Webvium Browser is a free Android browser that blocks ads and
-            trackers by default, needs no account, and downloads in under 400
-            KB. It is part of a small, independent set of tools that includes
-            Web App and open-source extensions for desktop browsers.
-          </Reveal>
-
-          <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/downloads"
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
+        <div
+          className={`relative ${innerClass} grid items-center gap-14 lg:grid-cols-1`}
+        >
+          <div>
+            <Reveal
+              as="h1"
+              delay={80}
+              className="text-4xl font-semibold leading-tight sm:text-6xl lg:text-5xl"
             >
-              <FontAwesomeIcon icon={faDownload} />
-              Download Webvium
-            </Link>
+              Webvium, a lightweight and private web browser for Android
+            </Reveal>
 
-            <Link
-              href="/browser"
-              className="flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface-2 sm:w-auto"
+            <Reveal
+              as="p"
+              delay={160}
+              className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
             >
-              See browser features
-              <FontAwesomeIcon icon={faArrowRight} />
-            </Link>
-          </Reveal>
+              Webvium Browser is a free Android browser of about 300 KB with a
+              built-in ad blocker, smart search, and no account required. It is
+              part of a small, independent set of tools that includes Web App
+              and open-source extensions for desktop browsers.
+            </Reveal>
 
-          <Reveal delay={320}>
-            <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border text-left sm:grid-cols-4">
-              {facts.map((fact) => (
-                <div key={fact.label} className="bg-background px-4 py-3">
-                  <dt className="text-xs text-muted">{fact.label}</dt>
-                  <dd className="mt-1 text-sm font-medium">{fact.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <Reveal
+              delay={240}
+              className="mt-10 flex flex-col gap-3 sm:flex-row"
+            >
+              <Link
+                href="/downloads"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
+              >
+                <FontAwesomeIcon icon={faDownload} />
+                Download Webvium
+              </Link>
+
+              <Link
+                href="/browser"
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface-2 sm:w-auto"
+              >
+                See browser features
+                <FontAwesomeIcon icon={faArrowRight} />
+              </Link>
+            </Reveal>
+          </div>
+
+          <Reveal delay={200}>
+            <HeroMedia
+              type="video"
+              src="/videos/webvium-promo-15s.mp4"
+              poster="/images/00-feature-graphic-1024x500.png"
+              label="Webvium Browser promo video showing the new interface"
+            />
           </Reveal>
         </div>
       </section>
@@ -280,7 +284,7 @@ export default function Home() {
           <Reveal as="p" delay={80} className="mt-3 max-w-2xl text-muted">
             Most Android browsers download tens of megabytes and rely on
             extensions or separate apps for privacy. Webvium puts ad blocking,
-            privacy signals, and everyday tools inside one small app.
+            smart search, and everyday tools inside one small app.
           </Reveal>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -304,8 +308,8 @@ export default function Home() {
           </Reveal>
           <Reveal as="p" delay={80} className="mt-3 max-w-2xl text-muted">
             Webvium started as a single browser and grew into a handful of
-            focused projects. Some are active, one is in development, and two
-            have been retired after serving their purpose.
+            focused projects. Some are active, two are being built or rebuilt,
+            and one has been retired after serving its purpose.
           </Reveal>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

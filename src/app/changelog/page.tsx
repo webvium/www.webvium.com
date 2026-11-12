@@ -1,4 +1,5 @@
 import Reveal from "@/components/common/Reveal";
+import HeroMedia from "@/components/common/HeroMedia";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -39,9 +40,9 @@ const changelog = [
   {
     version: "4.0.0",
     date: "September 2026",
-    title: "Google Play Release",
+    title: "A new Webvium",
     description:
-      "Bug fixes, new package name, and a start of something new. Rolling out to Google Play Store. All other releases will follow Play Store.",
+      "A major update with a new interface and user experience: a calm dark theme, smart search with suggestions and voice search, an ad blocker with live per-page counts and a per-site switch, experimental user script extensions, a single menu for everyday tools, and a Manage Space screen. Webvium 4 also uses a new package name and is released on Google Play, with Uptodown following Play Store releases as a separately signed build.",
   },
   {
     version: "3.1.3",
@@ -121,31 +122,44 @@ export default function Changelog() {
       <section className="relative flex min-h-screen items-center overflow-hidden px-5 py-24">
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
-        <div className="relative mx-auto w-full max-w-3xl">
-          <Reveal>
-            <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary">
-              Changelog
-            </span>
-          </Reveal>
+        <div
+          className={`relative mx-auto w-full max-w-5xl grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_20rem]`}
+        >
+          <div>
+            <Reveal
+              as="h1"
+              delay={80}
+              className="mt-6 text-4xl font-semibold leading-tight sm:text-6xl lg:text-5xl"
+            >
+              Built over time.
+              <span className="block text-muted">
+                Improved with every release.
+              </span>
+            </Reveal>
 
-          <Reveal
-            as="h1"
-            delay={80}
-            className="mt-6 text-4xl font-semibold leading-tight sm:text-6xl"
-          >
-            Built over time.
-            <span className="block text-muted">
-              Improved with every release.
-            </span>
-          </Reveal>
-
-          <Reveal
-            as="p"
-            delay={160}
-            className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg"
-          >
-            A record of the changes, improvements, and ideas that have shaped
-            Webvium into the browser it is today.
+            <Reveal
+              as="p"
+              delay={160}
+              className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg"
+            >
+              A record of the changes, improvements, and ideas that have shaped
+              Webvium into the browser it is today.
+            </Reveal>
+          </div>
+          <Reveal delay={200}>
+            <HeroMedia
+              type="phones"
+              shots={[
+                {
+                  src: "/images/02-screenshot-1080x1920.png",
+                  alt: "Webvium 4 search suggestions from history and the web",
+                },
+                {
+                  src: "/images/05-screenshot-1080x1920.png",
+                  alt: "Webvium 4 tab sheet with a private tab option",
+                },
+              ]}
+            />
           </Reveal>
         </div>
       </section>

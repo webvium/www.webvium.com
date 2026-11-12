@@ -1,5 +1,6 @@
 import extensions from "@/lib/extensions";
 import Reveal from "@/components/common/Reveal";
+import HeroMedia from "@/components/common/HeroMedia";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -78,44 +79,64 @@ export default async function ExtensionPage({ params }: PageProps) {
       <section className={`${section} relative overflow-hidden`}>
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
 
-        <div className={`relative ${innerClass}`}>
-          <Reveal
-            as="h1"
-            delay={80}
-            className="text-4xl font-semibold leading-tight sm:text-6xl"
-          >
-            {extension.name}
-          </Reveal>
-
-          <Reveal
-            as="p"
-            delay={160}
-            className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
-          >
-            {extension.description}
-          </Reveal>
-
-          <Reveal delay={240} className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href={extension.chrome_webstore_url ?? "#"}
-              aria-disabled={!extension.chrome_webstore_url}
-              tabIndex={extension.chrome_webstore_url ? 0 : -1}
-              className={`flex items-center justify-center rounded-full px-6 py-3 font-medium transition-transform ${
-                extension.chrome_webstore_url
-                  ? "bg-primary text-primary-contrast hover:scale-[1.03] active:scale-95"
-                  : "pointer-events-none cursor-not-allowed bg-muted text-muted-foreground opacity-50"
-              }`}
+        <div
+          className={`relative ${innerClass} grid items-center gap-14 ${extension.cover ? "lg:grid-cols-2" : ""}`}
+        >
+          <div>
+            <Reveal
+              as="h1"
+              delay={80}
+              className="text-4xl font-semibold leading-tight sm:text-6xl lg:text-5xl"
             >
-              Chrome Web Store
-            </Link>
+              {extension.name}
+            </Reveal>
 
-            <Link
-              href={extension.github_url}
-              className="flex items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface"
+            <Reveal
+              as="p"
+              delay={160}
+              className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg"
             >
-              View on GitHub
-            </Link>
-          </Reveal>
+              {extension.description}
+            </Reveal>
+
+            <Reveal
+              delay={240}
+              className="mt-10 flex flex-col gap-3 sm:flex-row"
+            >
+              <Link
+                href={extension.chrome_webstore_url ?? "#"}
+                aria-disabled={!extension.chrome_webstore_url}
+                tabIndex={extension.chrome_webstore_url ? 0 : -1}
+                className={`flex items-center justify-center rounded-full px-6 py-3 font-medium transition-transform ${
+                  extension.chrome_webstore_url
+                    ? "bg-primary text-primary-contrast hover:scale-[1.03] active:scale-95"
+                    : "pointer-events-none cursor-not-allowed bg-muted text-muted-foreground opacity-50"
+                }`}
+              >
+                Chrome Web Store
+              </Link>
+
+              <Link
+                href={extension.github_url}
+                className="flex items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface"
+              >
+                View on GitHub
+              </Link>
+            </Reveal>
+          </div>
+          {extension.cover && (
+            <Reveal delay={200}>
+              <HeroMedia
+                type="wide"
+                shot={{
+                  src: extension.cover,
+                  alt: `${extension.name} screenshot`,
+                }}
+                width={1280}
+                height={800}
+              />
+            </Reveal>
+          )}
         </div>
       </section>
     </div>
